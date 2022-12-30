@@ -18,6 +18,7 @@
 *.controller merge=unityyamlmerge eol=lf
 *.jpg binary
 *.png binary
+*.file binary
 
 
 ## git-lfs ##
