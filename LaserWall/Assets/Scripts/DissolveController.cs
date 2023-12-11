@@ -6,11 +6,12 @@ using UnityEngine.VFX;
 public class DissolveController : MonoBehaviour
 {
     [Header("Dissolve")]
-    [SerializeField] private SkinnedMeshRenderer[] skinnedMeshes;
     [SerializeField] private VisualEffect VFXGraph;
-    [SerializeField] private List<Material> skinnedMaterials = new List<Material>();
-    [SerializeField] private float refreshRate = 0.030f;
-    [SerializeField] private float dissolveRate = 0.015f;
+    [SerializeField] private float refreshRate = 0.175f;
+    [SerializeField] private float dissolveRate = 0.2f;
+
+    private SkinnedMeshRenderer[] skinnedMeshes;
+    private List<Material> skinnedMaterials = new List<Material>();
 
     [Header("Animate")]
     [SerializeField] private Animator anim;

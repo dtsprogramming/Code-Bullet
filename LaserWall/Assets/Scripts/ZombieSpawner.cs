@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject zombie;
+    [SerializeField] private GameObject spawnObject;
     [SerializeField] private Transform platformTransform;
     [SerializeField] private Transform[] spawners;
-    [SerializeField] private float spawnDelay = 2.5f;
+    [SerializeField] private float spawnDelay = 6f;
 
     private float countdown = 1f;
 
@@ -24,7 +24,7 @@ public class ZombieSpawner : MonoBehaviour
     {
         countdown = spawnDelay;
 
-        GameObject newZombie = Instantiate(zombie, spawners[UnityEngine.Random.Range(0, spawners.Length)]);
+        GameObject newZombie = Instantiate(spawnObject, spawners[UnityEngine.Random.Range(0, spawners.Length)]);
         newZombie.transform.parent = platformTransform;
     }
 }
