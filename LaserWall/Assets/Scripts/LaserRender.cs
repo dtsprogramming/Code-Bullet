@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class LaserRender : MonoBehaviour
 {
@@ -14,6 +12,9 @@ public class LaserRender : MonoBehaviour
     [SerializeField] private float widthStart = 0.2f;
     [SerializeField] private float widthEnd = 0.2f;
 
+    [Header("Laser Toggles")]
+    [SerializeField] private float rayDistance = 100f;
+
     private List<LineRenderer> lineRenderers = new List<LineRenderer>();
 
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class LaserRender : MonoBehaviour
         ActivateLasers();
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         RenderLasers();
     }
@@ -47,18 +48,25 @@ public class LaserRender : MonoBehaviour
     {
         for(int i = 0; i < lineRenderers.Count; i++)
         {
-            Ray ray = new Ray(startPoints[i].position, startPoints[i].right);
-            bool cast = Physics.Raycast(ray, out RaycastHit hit, 10000f);
-            Vector3 hitPosition = cast ? hit.point : startPoints[i].position + startPoints[i].forward * 1000f;
+            Vector3 direction = endPoints[i].position - startPoints[i].position;
+
+            Ray ray = new Ray(startPoints[i].position, direction);
+            Debug.DrawRay(startPoints[i].position, direction * rayDistance, Color.green);
+            bool cast = Physics.Raycast(ray, out RaycastHit hit, rayDistance);
+            Vector3 hitPosition = cast ? hit.point : endPoints[i].position;
 
             lineRenderers[i].SetPosition(0, startPoints[i].position);
             lineRenderers[i].SetPosition(1, hitPosition);
 
-            if (hit.collider.tag == "Sacrifice")
+            if (hit.collider.CompareTag("Sacrifice"))
             {
                 DissolveController onLaserHit = hit.collider.gameObject.GetComponent<DissolveController>();
                 onLaserHit.ZombieDeathAnim();
                 onLaserHit.DissolveZombie();
+            }
+            else
+            {
+                continue;
             }
         }
     }
