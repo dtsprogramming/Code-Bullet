@@ -1,20 +1,13 @@
-using System;
-using System.Linq;
 using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject zombie;
+    [SerializeField] private Transform platformTransform;
     [SerializeField] private Transform[] spawners;
-    [SerializeField] private float spawnTime = 2.5f;
+    [SerializeField] private float spawnDelay = 2.5f;
 
-    private float countdown = 0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        countdown = spawnTime;
-    }
+    private float countdown = 1f;
 
     // Update is called once per frame
     void Update()
@@ -29,8 +22,9 @@ public class ZombieSpawner : MonoBehaviour
 
     private void SpawnZombie()
     {
-        countdown = spawnTime;
+        countdown = spawnDelay;
 
         GameObject newZombie = Instantiate(zombie, spawners[UnityEngine.Random.Range(0, spawners.Length)]);
+        newZombie.transform.parent = platformTransform;
     }
 }

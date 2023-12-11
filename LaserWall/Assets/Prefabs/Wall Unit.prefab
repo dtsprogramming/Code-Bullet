@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2144971023758608480}
   serializedVersion: 2
   m_LocalRotation: {x: 0.05708763, y: -0.93028456, z: 0.08835888, w: 0.35143203}
-  m_LocalPosition: {x: 3.06, y: 3.52, z: 14.45}
+  m_LocalPosition: {x: 4.28, y: 3.12, z: 15.78}
   m_LocalScale: {x: 1, y: 1, z: -0.005456728}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 3550488602584621485}
   m_Layer: 0
   m_Name: Wall Unit
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,33 +424,7 @@ MonoBehaviour:
   laserLine: {fileID: 7383375780792689537, guid: 5c0359b7163333347a6b953ae2383669, type: 3}
   widthStart: 0.04
   widthEnd: 0.04
-  onLaserHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6859863287312885943, guid: 79899c3b7ae054046ab4827ad2398ac8, type: 3}
-        m_TargetAssemblyTypeName: DissolveController, Assembly-CSharp
-        m_MethodName: ZombieDeathAnim
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6859863287312885943, guid: 79899c3b7ae054046ab4827ad2398ac8, type: 3}
-        m_TargetAssemblyTypeName: DissolveController, Assembly-CSharp
-        m_MethodName: DissolveZombie
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  rayDistance: 100
 --- !u!114 &3550488602584621485
 MonoBehaviour:
   m_ObjectHideFlags: 0
